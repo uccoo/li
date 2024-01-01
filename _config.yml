@@ -99,12 +99,10 @@ Plugins:
 - hexo-generator-sitemap
 sitemap:
     path: sitemap.xml
-baidusitemap:
-    path: baidusitemap.xml
-    url: https://www.biogithub.com/  
+  
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repository: https://github.com/hyinli/hyinli.github.io.git
+  repository: https://github.com/uccoo/li
   branch: master 
