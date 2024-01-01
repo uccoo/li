@@ -9,7 +9,7 @@ blog_path: /
 
 #链接图标 显示顺序和下面顺序一致
 link:
-  theme: color # 链接样式，color: 彩色图标  white: 黑白图标
+  theme: 3-hexo # 链接样式，color: 彩色图标  white: 黑白图标
   items:
     rss: /atom.xml
     github: https://github.com/yelog
