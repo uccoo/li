@@ -1,0 +1,1644 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="google-site-verification" content="46azurDV6ghykBQF8wLVWeLTuDNbMq-p6DrpqZROFlE">
+<meta name="baidu-site-verification" content="qioyGQqYYq">
+
+
+
+
+
+
+
+
+
+  <meta name="google-site-verification" content="true">
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="true">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="1基础命令: cd -, cd … , history, !5 ,  /home/ , /tmp/ , &amp;gt;,&amp;amp;，jobs,nohup 1,2,0  1 cd(change directory) cd …返回上一级目录 cd …/…返回上两级目录 cd 进入家目录 cd ~进入家目录(目前用户身份所在的主文件夹)等同于cd cd ~account 进到account这个用户的主文件夹">
+<meta name="keywords" content="Linux,常用命令">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux常用命令">
+<meta property="og:url" content="https://hyinli.github.io/2019/05/07/Linux常用命令/index.html">
+<meta property="og:site_name" content="K1 biogithub">
+<meta property="og:description" content="1基础命令: cd -, cd … , history, !5 ,  /home/ , /tmp/ , &amp;gt;,&amp;amp;，jobs,nohup 1,2,0  1 cd(change directory) cd …返回上一级目录 cd …/…返回上两级目录 cd 进入家目录 cd ~进入家目录(目前用户身份所在的主文件夹)等同于cd cd ~account 进到account这个用户的主文件夹">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-05-09T13:40:45.243Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux常用命令">
+<meta name="twitter:description" content="1基础命令: cd -, cd … , history, !5 ,  /home/ , /tmp/ , &amp;gt;,&amp;amp;，jobs,nohup 1,2,0  1 cd(change directory) cd …返回上一级目录 cd …/…返回上两级目录 cd 进入家目录 cd ~进入家目录(目前用户身份所在的主文件夹)等同于cd cd ~account 进到account这个用户的主文件夹">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="K1 biogithub" type="application/atom+xml">
+
+
+
+  
+  
+  <link rel="canonical" href="https://hyinli.github.io/2019/05/07/Linux常用命令/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Linux常用命令 | K1 biogithub</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">K1 biogithub</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <h1 class="site-subtitle" itemprop="description">只做两件事</h1>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">6</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">21</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">15</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-links">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/links/" rel="section"><i class="menu-item-icon fa fa-fw fa-paperclip"></i> <br>友链</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+  
+  
+
+  
+
+  <a href="https://github.com/hyinli" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewbox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a>
+
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://hyinli.github.io/2019/05/07/Linux常用命令/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kelly">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="K1 biogithub">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Linux常用命令
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-07 10:26:18" itemprop="dateCreated datePublished" datetime="2019-05-07T10:26:18+08:00">2019-05-07</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-09 21:40:45" itemprop="dateModified" datetime="2019-05-09T21:40:45+08:00">2019-05-09</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">5.1k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">5 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="1基础命令"><a class="markdownIt-Anchor" href="#1基础命令"></a> 1基础命令:</h1>
+<p>cd -, cd … , history, !5 ,  /home/ , /tmp/ , &gt;,&amp;，jobs,nohup 1,2,0</p>
+<h2 id="1-cdchange-directory"><a class="markdownIt-Anchor" href="#1-cdchange-directory"></a> 1 cd(change directory)</h2>
+<p>cd …返回上一级目录<br>
+cd …/…返回上两级目录<br>
+cd 进入家目录<br>
+cd ~进入家目录(目前用户身份所在的主文件夹)等同于cd<br>
+cd ~account 进到account这个用户的主文件夹(/home/account)<br>
+cd -返回上次目录</p>
+<h2 id="2-history"><a class="markdownIt-Anchor" href="#2-history"></a> 2 history</h2>
+<p>history 显示历史目录</p>
+<h1 id="2文件和目录操作"><a class="markdownIt-Anchor" href="#2文件和目录操作"></a> 2文件和目录操作：</h1>
+<p>ls,cd,pwd,mkdir,rm,mv,cp</p>
+<h2 id="1-ls-最常用ls-al"><a class="markdownIt-Anchor" href="#1-ls-最常用ls-al"></a> 1 ls() 最常用ls -al</h2>
+<p>ls有很多参数，常用的有以下<br>
+-a 显示全部文件，包括隐藏文件（开头为.）一起显示<br>
+-d 仅列出目录本身，而不是列出目录内的文件数据<br>
+-f 直接列出结果，不进行排序（ls默认以文件名排序）<br>
+-l 列出长数据串，包含文件的属性与权限<br>
+-r 排序结果反向输出<br>
+-S 以文件容量大小排序（而不是以文件名排序）<br>
+-t 以时间排序，而不是文件名排序<br>
+–full-time 以完整时间模式输出，可以呈现文件的修改时间<br>
+color=auto 系统自行根据设置判断是否给予颜色</p>
+<h2 id="2-pwdprint-working-directory"><a class="markdownIt-Anchor" href="#2-pwdprint-working-directory"></a> 2 pwd(print working directory)</h2>
+<p>显示当前目录</p>
+<h2 id="3-mkdirmake-directory"><a class="markdownIt-Anchor" href="#3-mkdirmake-directory"></a> 3 mkdir(make directory)</h2>
+<p>创建新目录<br>
+mkdir -p 递归创建，自行创建多层目录<br>
+mkdir -p test1/test2/test3如果没有test1，那么就会自行创建</p>
+<h2 id="4-rm和rmdirremove-directory"><a class="markdownIt-Anchor" href="#4-rm和rmdirremove-directory"></a> 4 rm和rmdir(remove directory)</h2>
+<p>删除目录<br>
+rmdir -p 连同上层的空目录一起删除（rmdir仅能删除空的目录）<br>
+若要删除所有目录下的所有东西用rm命令<br>
+rm - r</p>
+<h2 id="5-复制-移动-删除cprmmv"><a class="markdownIt-Anchor" href="#5-复制-移动-删除cprmmv"></a> 5 复制、移动、删除：cp，rm，mv</h2>
+<h3 id="1-复制cpcopy"><a class="markdownIt-Anchor" href="#1-复制cpcopy"></a> 1 复制cp(copy)</h3>
+<p>cp 源文件 目标文件<br>
+常用的参数有<br>
+-a 复制的文件属性完全一样<br>
+-i 若目标文件已经存在，会询问是否覆盖<br>
+-r 递归持续复制，用于目录的复制行为</p>
+<h3 id="2-删除rmremove"><a class="markdownIt-Anchor" href="#2-删除rmremove"></a> 2 删除rm(remove)</h3>
+<p>rm [-fir]<br>
+-f force的意思，强制删除<br>
+-i 询问是否删除<br>
+-r 递归删除</p>
+<h3 id="3-移动或改名mvmove"><a class="markdownIt-Anchor" href="#3-移动或改名mvmove"></a> 3 移动或改名mv(move)</h3>
+<p>mv [-fiu] 源文件 目标文件<br>
+-f 强制覆盖，若目标文件已经有，不会询问<br>
+-i 若目标文件存在，会询问<br>
+-u 若目标文件存在，且源文件比较新，才会更新update</p>
+<h1 id="3文件内容查阅touchheadtaillessmorecat"><a class="markdownIt-Anchor" href="#3文件内容查阅touchheadtaillessmorecat"></a> 3文件内容查阅touch,head,tail,less,more，cat</h1>
+<p>cat 第一行开始显示文件内容<br>
+tac 最好一行开始显示，是cat的倒写<br>
+more 一页一页显示文件内容<br>
+less和more类似，但它可以往前翻页<br>
+head 只看头几行<br>
+tail只看后几行</p>
+<h2 id="1-touch-创建或修改文件"><a class="markdownIt-Anchor" href="#1-touch-创建或修改文件"></a> 1 touch 创建或修改文件</h2>
+<p>touch 文件</p>
+<h2 id="2-catconcatenate一口气输出到屏幕"><a class="markdownIt-Anchor" href="#2-catconcatenate一口气输出到屏幕"></a> 2 cat(concatenate)：一口气输出到屏幕</h2>
+<p>cat -n 最常用 打印出行号，空白行也有行号<br>
+cat -b 列出行号，但仅针对非空白行，空白行不标，注意与-n的区别<br>
+这个命令单独用比较少，当文件行数超过40，来不及在屏幕看到结果，所以更常用的是more和less</p>
+<h2 id="3-more一页一页翻"><a class="markdownIt-Anchor" href="#3-more一页一页翻"></a> 3 more一页一页翻</h2>
+<p>more hg38.tss</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">NR_046018       chr1    9874    13874   0</span><br><span class="line">NR_024540       chr1    27370   31370   1</span><br><span class="line">NR_104148       chr7    64664083        64668083        0</span><br><span class="line">NR_111960       chrX    44871175        44875175        0</span><br><span class="line">NR_028458       chr14   92104621        92108621        1</span><br><span class="line">NR_028459       chr14   92104621        92108621        1</span><br><span class="line">NR_026818       chr1    34081   38081   1</span><br><span class="line">NR_026820       chr1    34081   38081   1</span><br><span class="line">NR_026822       chr1    34081   38081   1</span><br><span class="line">NM_001005484    chr1    67091   71091   0</span><br><span class="line">NR_039983       chr1    138566  142566  1</span><br><span class="line">NR_103753       chr5    102669464       102673464       1</span><br><span class="line">NR_104160       chr10   32345218        32349218        1</span><br><span class="line">NR_026823       chr1    204597  208597  1</span><br><span class="line">NM_001005221    chr1    449678  453678  1</span><br><span class="line">NM_001005224    chr1    449678  453678  1</span><br><span class="line">NM_001005277    chr1    449678  453678  1</span><br><span class="line">NR_028322       chr1    493445  497445  1</span><br><span class="line">NR_028325       chr1    493445  497445  1</span><br><span class="line">NR_125957       chr1    627009  631009  1</span><br><span class="line">NM_001005221-HOMER2     chr1    684654  688654  1</span><br><span class="line">NM_001005224-HOMER2     chr1    684654  688654  1</span><br><span class="line">NM_001005277-HOMER2     chr1    684654  688654  1</span><br><span class="line">NR_028327       chr1    728351  732351  1</span><br><span class="line">NR_033908       chr1    776688  780688  1</span><br><span class="line">NR_103536       chr1    815371  819371  0</span><br><span class="line">NR_047526       chr1    825591  829591  0</span><br><span class="line">NR_047519       chr1    825591  829591  0</span><br><span class="line">NR_047521       chr1    825591  829591  0</span><br><span class="line">--More--(0%)</span><br></pre></td></tr></table></figure>
+<p>重点在最好一行，光标在这里等待命令,可以执行以下<br>
+空格键：向下翻一页<br>
+enter：向下滚动一行<br>
+/字符串：在显示的内容中，向下查询‘字符串’这个关键字<br>
+q：离开more，不再显示该文件内容</p>
+<h2 id="4-less一页一页翻"><a class="markdownIt-Anchor" href="#4-less一页一页翻"></a> 4 less一页一页翻</h2>
+<p>less比more更好，可以前后翻，也可以前后查询<br>
+空格键：向下翻一页<br>
+pagedown：向下翻一页<br>
+pageup：向上翻一页<br>
+/字符串：向下查询‘字符串’<br>
+？字符串：向上查询‘字符串’<br>
+q：离开less<br>
+各个参数如下<br>
+-N显示每行行号<br>
+-s显示连续空行为一行<br>
+-S行过长将超出部分舍弃<br>
+-f强迫打开特殊文件</p>
+<h2 id="5-head和tail"><a class="markdownIt-Anchor" href="#5-head和tail"></a> 5 head和tail</h2>
+<p>以行为单位进行数据选取<br>
+head [-n number] 文件  默认10行<br>
+注意，number可以是负数，比如<br>
+head -n -100 文件<br>
+假若文件有141行，那么上面这个就是显示前面41行，后面100行不显示</p>
+<h3 id="取11到20行呢"><a class="markdownIt-Anchor" href="#取11到20行呢"></a> 取11到20行呢</h3>
+<p>先取前20行，再取后10行<br>
+head -n 20 文件|tail -n 10,</p>
+<h1 id="3系统管理"><a class="markdownIt-Anchor" href="#3系统管理"></a> 3系统管理：</h1>
+<p>df,du,top,free,ps,ipconfig,netstat,ssh,scp,</p>
+<h2 id="1-df"><a class="markdownIt-Anchor" href="#1-df"></a> 1 df</h2>
+<p>列出文件系统的整体磁盘使用量<br>
+df [-ahikHTm] 目录或文件名，默认以KB列出<br>
+-h 较易阅读的GB,MB,KB格式显示<br>
+-i 不用硬盘容量，而已inode的数量显示</p>
+<h2 id="2-du"><a class="markdownIt-Anchor" href="#2-du"></a> 2 du</h2>
+<p>du [-ahskm]文件名或目录名<br>
+-s 列出总量，不列出每个各别的目录占用容量<br>
+-h 以人们容易读的容量格式显示(G)<br>
+du -sh常用</p>
+<h2 id="top"><a class="markdownIt-Anchor" href="#top"></a> top</h2>
+<h1 id="4用户权限"><a class="markdownIt-Anchor" href="#4用户权限"></a> 4用户权限：</h1>
+<p>chown,chgrp,groups,ls</p>
+<h1 id="5文本操作"><a class="markdownIt-Anchor" href="#5文本操作"></a> 5文本操作：</h1>
+<p>awk,grep,sed,paste,cat,diff,wc,vi</p>
+<h2 id="51-wc"><a class="markdownIt-Anchor" href="#51-wc"></a> 5.1 wc</h2>
+<p>wc命令计算文件的行数，字数和字节数<br>
+用法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wc [-clw] 文件</span><br></pre></td></tr></table></figure>
+<p>-c 只显示bytes数<br>
+-l 只显示行数<br>
+-w 只显示字数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ wc testfile           # testfile文件的统计信息  </span><br><span class="line">3 92 598 testfile       # testfile文件的行数为3、单词数92、字节数598</span><br></pre></td></tr></table></figure>
+<h2 id="52-diff"><a class="markdownIt-Anchor" href="#52-diff"></a> 5.2 diff</h2>
+<p>diff命令用了比较两个文件的差异</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">diff me.txt me_copy.txt -y</span><br><span class="line">This is the first post.                                       | This is the first first post.</span><br><span class="line">This is the second line.                                      | This is the second second line.</span><br><span class="line">This is the third line.                                       | This is the third third line..</span><br></pre></td></tr></table></figure>
+<p>diff的参数很多，具体参考<a href="http://www.runoob.com/linux/linux-comm-diff.html" target="_blank" rel="noopener">Linux diff命令</a>,常用-y<br>
+结果解释</p>
+<blockquote>
+<p>&quot;|&quot;表示前后2个文件内容有不同<br>
+&quot;&lt;&quot;表示后面文件比前面文件少了1行内容<br>
+&quot;&gt;&quot;表示后面文件比前面文件多了1行内容</p>
+</blockquote>
+<h2 id="53-paste命令"><a class="markdownIt-Anchor" href="#53-paste命令"></a> 5.3 paste命令</h2>
+<p>paste命令用于合并文件的列，把文件内容列列合并。简单就是列追加，类似R中的<code>cbind</code>命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">paste [-s] [-d&lt;间隔字符&gt;][文件1][文件2][文件...]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ cat p1</span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ cat p2</span><br><span class="line">a</span><br><span class="line">b</span><br><span class="line">c</span><br><span class="line">d</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ cat p3</span><br><span class="line">I</span><br><span class="line">II</span><br><span class="line">III</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ paste  p1 p2 p3</span><br><span class="line">1       a       I</span><br><span class="line">2       b       II</span><br><span class="line">3       c       III</span><br><span class="line">        d</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ paste -d &apos;%^&amp;&apos; p1 p2 p3</span><br><span class="line">1%a^I</span><br><span class="line">2%b^II</span><br><span class="line">3%c^III</span><br><span class="line">%d^</span><br></pre></td></tr></table></figure>
+<p>看下-s参数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ paste -s p1 p2 p3</span><br><span class="line">1       2       3</span><br><span class="line">a       b       c       d</span><br><span class="line">I       II      III</span><br></pre></td></tr></table></figure>
+<p>相当于excel里的“转置粘贴”</p>
+<h2 id="54-sort命令"><a class="markdownIt-Anchor" href="#54-sort命令"></a> 5.4 sort命令</h2>
+<p>sort是用来对数据进行排序的命令，用法为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sort [-bcfMnrtk][源文件][-o 输出文件]</span><br></pre></td></tr></table></figure>
+<p>注意，sort可以对文本文件以行为单位进行排序。</p>
+<blockquote>
+<p>sort的参数比较多，但常用的为一下几个<br>
+<code>-n</code> <code>-k</code> <code>-t</code> <code>-r</code></p>
+</blockquote>
+<p>举例如下</p>
+<h3 id="541-n的用法"><a class="markdownIt-Anchor" href="#541-n的用法"></a> 5.4.1-n的用法</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ sort t1</span><br><span class="line"></span><br><span class="line">1</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">2</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ sort -n t1</span><br><span class="line"></span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td></tr></table></figure>
+<p><code>-n</code>的作用很清楚了，可以使得number不是以字符排序，而是以数字排序。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">$ sort -nr t1</span><br><span class="line">14</span><br><span class="line">13</span><br><span class="line">6</span><br><span class="line">5</span><br><span class="line">4</span><br><span class="line">2</span><br><span class="line">1</span><br></pre></td></tr></table></figure>
+<p>-r(reverse)反向排序</p>
+<h3 id="542-kt的用法"><a class="markdownIt-Anchor" href="#542-kt的用法"></a> 5.4.2-kt的用法</h3>
+<p>对按字段分隔的数据非常有用<br>
+-t指定字段分隔符（sep）<br>
+-k指定排序的字段（key）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ cat t2</span><br><span class="line">banana:30:5.5</span><br><span class="line">apple:10:2.5</span><br><span class="line">pear:90:2.3</span><br><span class="line">orange:20:3.4</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ sort -t &apos;:&apos; -k 2 t2</span><br><span class="line">apple:10:2.5</span><br><span class="line">orange:20:3.4</span><br><span class="line">banana:30:5.5</span><br><span class="line">pear:90:2.3</span><br></pre></td></tr></table></figure>
+<p>上例中，以’：'进行分隔，按第2个字段进行排序。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+      <div>
+        <div id="reward-container">
+  <div></div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/wechat.jpg" alt="Kelly 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/alipay.jpg" alt="Kelly 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Linux/" rel="tag"># Linux</a>
+          
+            <a href="/tags/常用命令/" rel="tag"># 常用命令</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/04/Linux常用快捷键/" rel="next" title="Linux常用快捷键">
+                <i class="fa fa-chevron-left"></i> Linux常用快捷键
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/07/Linux压缩和解压命令/" rel="prev" title="Linux压缩和解压常用命令">
+                Linux压缩和解压常用命令 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80Mzk1OS8yMDQ5NQ=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="Kelly">
+            
+              <p class="site-author-name" itemprop="name">Kelly</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">15</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">21</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/hyinli" title="GitHub &rarr; https://github.com/hyinli" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:kkyinli@gmail.com" title="E-Mail &rarr; mailto:kkyinli@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.jianshu.com/u/51a71446d509" title="https://www.jianshu.com/u/51a71446d509" rel="noopener" target="_blank">Y大宽</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.ucco.net" title="http://www.ucco.net" rel="noopener" target="_blank">k2</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.enjoytoshare.club/" title="https://blog.enjoytoshare.club/" rel="noopener" target="_blank">Wugenqiang</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1基础命令"><span class="nav-text"> 1基础命令:</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-cdchange-directory"><span class="nav-text"> 1 cd(change directory)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-history"><span class="nav-text"> 2 history</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2文件和目录操作"><span class="nav-text"> 2文件和目录操作：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-ls-最常用ls-al"><span class="nav-text"> 1 ls() 最常用ls -al</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-pwdprint-working-directory"><span class="nav-text"> 2 pwd(print working directory)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-mkdirmake-directory"><span class="nav-text"> 3 mkdir(make directory)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-rm和rmdirremove-directory"><span class="nav-text"> 4 rm和rmdir(remove directory)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-复制-移动-删除cprmmv"><span class="nav-text"> 5 复制、移动、删除：cp，rm，mv</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-复制cpcopy"><span class="nav-text"> 1 复制cp(copy)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-删除rmremove"><span class="nav-text"> 2 删除rm(remove)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-移动或改名mvmove"><span class="nav-text"> 3 移动或改名mv(move)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3文件内容查阅touchheadtaillessmorecat"><span class="nav-text"> 3文件内容查阅touch,head,tail,less,more，cat</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-touch-创建或修改文件"><span class="nav-text"> 1 touch 创建或修改文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-catconcatenate一口气输出到屏幕"><span class="nav-text"> 2 cat(concatenate)：一口气输出到屏幕</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-more一页一页翻"><span class="nav-text"> 3 more一页一页翻</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-less一页一页翻"><span class="nav-text"> 4 less一页一页翻</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-head和tail"><span class="nav-text"> 5 head和tail</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#取11到20行呢"><span class="nav-text"> 取11到20行呢</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3系统管理"><span class="nav-text"> 3系统管理：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-df"><span class="nav-text"> 1 df</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-du"><span class="nav-text"> 2 du</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#top"><span class="nav-text"> top</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4用户权限"><span class="nav-text"> 4用户权限：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5文本操作"><span class="nav-text"> 5文本操作：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#51-wc"><span class="nav-text"> 5.1 wc</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#52-diff"><span class="nav-text"> 5.2 diff</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#53-paste命令"><span class="nav-text"> 5.3 paste命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#54-sort命令"><span class="nav-text"> 5.4 sort命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#541-n的用法"><span class="nav-text"> 5.4.1-n的用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#542-kt的用法"><span class="nav-text"> 5.4.2-kt的用法</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kelly</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="站点总字数">61k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="站点阅读时长">55 分钟</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.1.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.1"></script>
+
+  <script src="/js/motion.js?v=7.1.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.1"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.1"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+    <script>
+  window.livereOptions = {
+    refer: '2019/05/07/Linux常用命令/'
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+<script>
+if ($('body').find('div.pdf').length) {
+  $.ajax({
+    type: 'GET',
+    url: '//cdn.jsdelivr.net/npm/pdfobject@2/pdfobject.min.js',
+    dataType: 'script',
+    cache: true,
+    success: function() {
+      $('body').find('div.pdf').each(function(i, o) {
+        PDFObject.embed($(o).attr('target'), $(o), {
+          pdfOpenParams: {
+            navpanes: 0,
+            toolbar: 0,
+            statusbar: 0,
+            pagemode: 'thumbs',
+            view: 'FitH'
+          },
+          PDFJS_URL: '/lib/pdf/web/viewer.html',
+          height: $(o).attr('height') || '500px'
+        });
+      });
+    },
+  });
+}
+</script>
+
+
+  
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
